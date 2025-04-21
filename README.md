@@ -1,4 +1,6 @@
-# Installing-Prometheus
+# Installing Prometheus and Grafana
+Installing-Prometheus and Grafana using Helm Charts
+
 
 ### Install helm
 ```bash
@@ -19,6 +21,9 @@ k get svc
 minikube ip
 ```
 
+- Access using [minikube ip]:[NodePort]
+
+
 # Installing Grafana
 
 ```bash
@@ -27,3 +32,11 @@ helm repo update
 helm install grafana grafana/grafana
 ```
 
+### Expose Nodeport for access
+```bash
+k expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext
+k get svc
+minikube ip
+```
+
+- Access using [minikube ip]:[NodePort]
